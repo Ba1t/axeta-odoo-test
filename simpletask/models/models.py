@@ -20,20 +20,14 @@ class Task(models.Model):
     name = fields.Char('Title', size=64, required=True)
     image = fields.Binary(attachment=True)
     description = fields.Text(required=True)
-    finish_date = fields.Date(required=True, default=fields.Date.today) # TODO сделать валидацию поля
+    finish_date = fields.Date(required=True, default=fields.Date.context_today)
     status = fields.Selection(selection=STATUSES_SELECT, required=True)
     # status_id = fields.Many2one('simpletask.status', ondelete='set null',
     #                             string='Status', required=True)
 
-    @api.multi
+    @api.one
     @api.constrains('finish_date')
     def _check_finish_date(self):
-        for fd in self:
-            if fd.finish_date.strftime('%Y-%m-%d') < fields.Date.today:
-                raise ValidationError(
-                    'Finish date must be greater or equal today')
-                # UserError(
-                #     'Finish date must be greater or equal today')
-        # if self.finish_date < fields.Date.today():
-        #     raise ValidationError(
-        #         'Finish date must be greater or equal today')
+        if self.finish_date < fields.Date.context_today(self):
+            raise ValidationError(
+                'Finish date must be greater or equal today')
