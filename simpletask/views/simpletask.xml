@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--Form view-->
+        <record model="ir.ui.view" id="simpletask_task_view_form">
+            <field name="name">Simpletask Task Form</field>
+            <field name="model">simpletask.task</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="status"/>
+                        <field name="create_date" type="date"/>
+                        <field name="finish_date"/>
+                        <field name="description"/>
+                        <!--<field name="author_ids" widget="many2many_tags"/>-->
+                    </group>
+                    <group>
+                        <field name="image"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!--Tree view-->
+        <record model="ir.ui.view" id="simpletask_task_view_tree">
+            <field name="name">Simpletask Task List</field>
+            <field name="model">simpletask.task</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="create_date"/>
+                    <field name="finish_date"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Search-->
+        <record model="ir.ui.view" id="simpletask_task_view_search">
+            <field name="name">Simpletask task Search</field>
+            <field name="model">simpletask.task</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+
+        <!--Action-->
+        <record model="ir.actions.act_window" id="task_list_action">
+            <field name="name">Tasks</field>
+            <field name="res_model">simpletask.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first task</p>
+            </field>
+        </record>
+
+        <!--Menus-->
+        <!-- Top menu item-->
+        <menuitem id="main_simpletask_menu" name="Simpletask"/>
+        <!--Menu on the left side-->
+        <menuitem id="simpletask_menu" name="Simpletask"
+                  parent="main_simpletask_menu"/>
+        <menuitem id="tasks_menu" name="Tasks"
+                  parent="simpletask_menu"
+                  action="task_list_action"/>
+    </data>
+</openerp>
