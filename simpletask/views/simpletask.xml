@@ -10,7 +10,7 @@
                     <group>
                         <field name="name"/>
                         <field name="status"/>
-                        <field name="create_date" readonly="1" widget="date"/>
+                        <field name="create_date" widget="date" readonly="1"/>
                         <!--<field name="create_date" widget="date"-->
                             <!--attrs="{'invisible': [('create_date', '=', False)]}"/>-->
                         <field name="finish_date"/>
@@ -51,6 +51,7 @@
 
         <!--Action-->
         <record model="ir.actions.act_window" id="task_list_action">
+            <field name="limit">15</field>
             <field name="name">Tasks</field>
             <field name="res_model">simpletask.task</field>
             <field name="view_type">form</field>
