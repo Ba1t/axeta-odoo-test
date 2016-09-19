@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "simpletask",
+    'name': "Simpletask",
 
     'category': 'Test',
-    'author': "Voronin Yuriy",
+    'author': 'Voronin Yuriy',
+    'website': 'https://github.com/Ba1t/axeta-odoo-test',
     'version': '0.1',
 
     'depends': ['base'],
 
-    # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         # 'views/views.xml',
         'views/templates.xml',
         'views/simpletask.xml',
     ],
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
 
-    'summary': """Simple task module""",
+    'summary': """Test task for "Axeta" """,
 
     'description': """
         Module for managing tasks from users:
             - create new task
-            - view tasks
+            - edit existed task
+            - view all tasks (list, form)
     """,
 }
