@@ -11,8 +11,6 @@
                         <field name="name"/>
                         <field name="status"/>
                         <field name="create_date" widget="date" readonly="1"/>
-                        <!--<field name="create_date" widget="date"-->
-                            <!--attrs="{'invisible': [('create_date', '=', False)]}"/>-->
                         <field name="finish_date"/>
                         <field name="description" widget="html"/>
                     </group>
